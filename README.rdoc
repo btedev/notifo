@@ -2,8 +2,8 @@
 
 A library for using Notifo. Notifo is a way for users to receive mobile notifications for anything, more at http://notifo.com. This gem uses John Nunemaker's awesome HTTParty.
 
-== Installing
-    $ gem install notifo
+== Installing via Gemfile
+    gem 'notifo', :git => 'git@github.com:btedev/notifo.git'
 
 == Using notifo
 
