@@ -6,6 +6,8 @@ class Notifo
   include HTTParty
   base_uri 'https://api.notifo.com/v1'
 
+  attr_reader :auth
+
   # Required Parameters
   # username - notifo service username
   # apikey - notifo service apisecret
@@ -28,7 +30,17 @@ class Notifo
   # uri - the uri that will be loaded when the notification is opened; if specified, must be urlencoded; if a web address, must start with http:// or https://
   # label - label describing the "application" (used only if being sent from a User account; the Service label is automatically applied if being sent from a Service account) 
   def post(username, msg, title=nil, uri=nil, label=nil)
-    options = { :body => {:to => username, :msg => msg, :label=>title, :title=>title, :uri=>uri}, :basic_auth => @auth }
+    options = { 
+      :body => {
+        :to => username, 
+        :msg => msg, 
+        :label=>title, 
+        :title=>title, 
+        :uri=>uri
+       }, 
+      :basic_auth => @auth 
+    }
+
     self.class.post('/send_notification', options)
   end
 
